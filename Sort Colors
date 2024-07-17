@@ -1,0 +1,43 @@
+We can come up with two solutions.
+1.Using Map:
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        vector<int> res;
+        map<int,int> count;
+        for(auto i:nums){
+            count[i]++;
+        }
+        for(auto i:count){
+            while(i.second>0){
+                res.push_back(i.first);
+                i.second--;
+            }
+        }
+        nums=res;
+    }
+};
+
+2.Using two pointers:
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int low =0,mid=0,high = nums.size()-1;
+        while(mid<=high){
+            if(nums[mid] == 0){
+                swap(nums[low], nums[mid]);
+                low++;
+                mid++;
+            }
+            else if(nums[mid] == 1){
+                mid++;
+            }
+            else{
+                swap(nums[mid], nums[high]);
+                high--;
+            }
+        }
+    }
+};
