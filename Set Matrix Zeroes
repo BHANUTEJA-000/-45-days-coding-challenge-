@@ -1,0 +1,25 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        vector<vector<int>> index;
+        int m=matrix.size();
+        int n=matrix[0].size();
+        for(auto i=0;i<m;i++){
+            for(auto j=0;j<n;j++){
+                if(matrix[i][j]==0){
+                    index.push_back({i,j});
+                }
+            }
+        }
+        if (index.size()==0)
+            return;
+        for(auto i:index){
+            int a=i[0],b=i[1];
+            for(auto j=0;j<n;j++)
+                matrix[a][j]=0;
+            for(auto k=0;k<m;k++){
+                matrix[k][b]=0;
+            }
+        }
+    }
+};
