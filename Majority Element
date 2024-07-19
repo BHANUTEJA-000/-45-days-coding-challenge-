@@ -1,0 +1,25 @@
+1.Using sort function:
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        return nums[nums.size()/2];
+   }
+};
+
+2.Using count variable:
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int ele,count=0;
+        for(auto i:nums){
+            if(count==0)
+                ele=i;
+            if(ele==i)
+                count++;
+            else
+                count--;
+        }
+        return ele;
+    }
+};
